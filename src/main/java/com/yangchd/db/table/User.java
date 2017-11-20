@@ -3,7 +3,6 @@ package com.yangchd.db.table;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author yangchd  2017/11/2.
@@ -20,9 +19,6 @@ public class User {
     private String name;
     private String age;
     private String sex;
-
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Pet> pets;
 
     public String getPkUser() {
         return pkUser;
@@ -54,14 +50,6 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public List<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
     }
 
     @Override

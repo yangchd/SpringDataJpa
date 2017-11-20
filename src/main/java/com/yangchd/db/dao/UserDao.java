@@ -11,4 +11,7 @@ import java.io.Serializable;
  */
 @Repository
 public interface UserDao extends JpaRepository<User,Serializable> {
+
+    User findByName(String name);
+
 }

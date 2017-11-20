@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * @author yangchd  2017/11/2.
@@ -28,24 +25,26 @@ public class Demo {
     private PetDao petDao;
 
     @Test
-    public void test(){
+    public void add(){
         User user = new User();
         user.setName("小明");
         user.setSex("男");
         user.setAge("18");
 
-        List<Pet> pets = new ArrayList<Pet>();
+        userDao.save(user);
+        user = userDao.findByName("小明");
+
         Pet cat = new Pet();
         cat.setName("猫");
-        pets.add(cat);
+        cat.setPkUser(user.getPkUser());
 
-        Pet dog = new Pet();
-        dog.setName("狗");
-        pets.add(dog);
+        petDao.save(cat);
 
-        user.setPets(pets);
+    }
 
-        userDao.save(user);
+    @Test
+    public void getUser(){
+        System.out.println(userDao.findAll().toString());
     }
 
 }

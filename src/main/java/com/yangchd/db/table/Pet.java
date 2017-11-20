@@ -18,9 +18,8 @@ public class Pet {
     private String pkPet;
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL,targetEntity = User.class)
     @JoinColumn(name = "pk_user")
-    private User user;
+    private String pkUser;
 
     public String getPkPet() {
         return pkPet;
@@ -38,12 +37,12 @@ public class Pet {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
+    public String getPkUser() {
+        return pkUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPkUser(String pkUser) {
+        this.pkUser = pkUser;
     }
 
     @Override
@@ -51,7 +50,7 @@ public class Pet {
         return "Pet{" +
                 "pkPet='" + pkPet + '\'' +
                 ", name='" + name + '\'' +
-                ", user=" + user +
+                ", pkUser='" + pkUser + '\'' +
                 '}';
     }
 }
